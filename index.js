@@ -124,4 +124,4 @@ function getSumm(arr) {
     }
 }
 
-console.log(getSumm(getMass(data)));
+getSumm(getMass(data));
