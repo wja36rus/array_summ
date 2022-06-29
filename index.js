@@ -1,13 +1,11 @@
 const data = [
-    {day_start: 1, day_stop: 2, all_day: 2},
-    {day_start: 3, day_stop: 5, all_day: 3},
-    {day_start: 6, day_stop: 8, all_day: 3},
-    {day_start: 9, day_stop: 11, all_day: 3},
-    {day_start: 15, day_stop: 14, all_day: 3},
-    {day_start: 15, day_stop: 19, all_day: 5},
-    {day_start: 20, day_stop: 24, all_day: 5}
+    {day_start: 1, day_stop: 5, all_day: 5},
+    {day_start: 8, day_stop: 10, all_day: 5},
+    {day_start: 11, day_stop: 15, all_day: 5},
+    {day_start: 22, day_stop: 20, all_day: 5},
+    {day_start: 21, day_stop: 25, all_day: 5},
+    {day_start: 26, day_stop: 30, all_day: 5},
 ];
-
 
 const getData = (data, index) => {
     const stop = data.length;
@@ -25,14 +23,14 @@ const getData = (data, index) => {
             result.push({
                 day_start: data[i].day_start,
                 day_stop: data[i].day_start + data[i].all_day - 1,
-                all_day: data[i].all_day,
+                all_day: data[i].all_day
             });
         } else if (i > index) {
             const is = i - 1;
             result.push({
                 day_start: result[is].day_stop + 1,
                 day_stop: result[is].day_stop + data[i].all_day - 1,
-                all_day: data[i].day_stop - result[is].day_stop + 1,
+                all_day: data[i].all_day - 1
             });
         }
     }
@@ -40,4 +38,4 @@ const getData = (data, index) => {
     return result
 };
 
-console.log(getData(data, 4));
+console.log(getData(data, 3));
