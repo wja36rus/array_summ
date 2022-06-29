@@ -3,9 +3,9 @@ const data = [
     {day_start: 3, day_stop: 5, all_day: 3},
     {day_start: 6, day_stop: 8, all_day: 3},
     {day_start: 9, day_stop: 11, all_day: 3},
-    {day_start: 12, day_stop: 14, all_day: 3},
+    {day_start: 15, day_stop: 14, all_day: 3},
     {day_start: 15, day_stop: 19, all_day: 5},
-    {day_start: 16, day_stop: 24, all_day: 5}
+    {day_start: 20, day_stop: 24, all_day: 5}
 ];
 
 
@@ -40,4 +40,4 @@ const getData = (data, index) => {
     return result
 };
 
-console.log(getData(data, 6));
+console.log(getData(data, 4));
