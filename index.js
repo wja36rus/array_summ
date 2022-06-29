@@ -1,49 +1,32 @@
 const data = [
-    {day_start: 1, day_stop: 2, all_day: 1},
-    {day_start: 3, day_stop: 5, all_day: 2},
-    {day_start: 6, day_stop: 9, all_day: 3}
+    {day_start: 1, day_stop: 2, all_day: 2},
+    {day_start: 4, day_stop: 5, all_day: 3},
+    {day_start: 6, day_stop: 10, all_day: 4},
+    {day_start: 11, day_stop: 13, all_day: 3}
+
 ];
 
-function getByAllDay(datas) {
 
-    const stop = datas.length;
+const getData = (data, index) => {
+    const stop = data.length;
 
-    const data = [];
     for (let i = 0; i < stop; i++) {
-        data.push({
-            day_start: datas[i].day_start,
-            day_stop: 0,
-            all_day: datas[i].all_day,
-        })
-    }
-
-    const all = [];
-    for (let i = 0; i < stop; i++) {
-        all.push(data[i].all_day);
-    }
-    const result_all = all.reduce((acc, obj) => acc + obj, 0);
-
-    const result = [];
-    const arr = data.reverse();
-    for (let i = 0; i < stop; i++) {
-        if (i === 0) {
-            result.push({
-                day_start: result_all - arr[i].all_day + 1,
-                day_stop: result_all,
-                all_day: arr[i].all_day
-            })
+        if (i < index) {
+            const is = i + 1;
+            data[i].data_stop = data[is].day_start - 1;
+            data[i].all_day = data[i].day_stop + data[i].day_start - 1;
+        } else if (i === index) {
+            console.log("current");
         } else {
             const is = i - 1;
-            result.push({
-                day_start: result[is].day_start - arr[i].all_day,
-                day_stop: result[is].day_start - 1,
-                all_day: arr[i].all_day
-            })
+            data[i].data_start = data[is].day_stop;
+            data[i].data_stop = data[is].day_start + data[is].all_day - 1;
+            data[i].all_day = data[i].day_stop + data[i].day_start - 1;
         }
     }
+    
+    
+    return data;
+};
 
-    console.log(result.reverse());
-
-}
-
-getByAllDay(data);
+console.log(getData(data, 1));
